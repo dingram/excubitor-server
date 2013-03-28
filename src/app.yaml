@@ -46,21 +46,21 @@ handlers:
   login: admin
 
 - url: /cron/.*
-  script: cron.app
+  script: cron.application
   login: admin
 
 # Incoming email
 #----------------
 
 - url: /_ah/mail/.+
-  script: email.app
+  script: email.application
   login: admin
 
 # Main app
 #----------
 
 - url: .*
-  script: main.app
+  script: main.application
   secure: always
   login: optional
 

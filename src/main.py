@@ -10,7 +10,7 @@ import app.config
 import app.views.simple
 
 
-app = webapp2.WSGIApplication([
+application = webapp2.WSGIApplication([
 	webapp2.Route('/', app.views.simple.SimplePage, defaults={'_template': 'index.html'}),
 
 	webapp2.Route('/login',  app.views.simple.Login),
@@ -22,7 +22,7 @@ app = webapp2.WSGIApplication([
 
 def main():
 	logging.getLogger().setLevel(logging.INFO)
-	app.run()
+	application.run()
 
 if __name__ == "__main__":
 	main()

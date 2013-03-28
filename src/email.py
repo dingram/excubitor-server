@@ -16,14 +16,14 @@ class LogMailHandler(InboundMailHandler):
 		logging.info("Received a message from %s with subject %s" % (message.sender, message.subject))
 
 
-app = webapp2.WSGIApplication([
+application = webapp2.WSGIApplication([
 	LogMailHandler.mapping()
 ], debug=app.config.DEBUG)
 
 
 def main():
 	logging.getLogger().setLevel(logging.INFO)
-	app.run()
+	application.run()
 
 if __name__ == "__main__":
 	main()
