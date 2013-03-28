@@ -1,0 +1,70 @@
+application: ingress-excubitor
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+builtins:
+- appstats: on
+- remote_api: on
+
+inbound_services:
+- mail
+
+handlers:
+
+# Static files
+#--------------
+
+- url: /favicon\.ico
+  static_files: assets/favicon.ico
+  upload: assets/favicon\.ico
+  expiration: 7d
+  secure: optional
+  login: optional
+
+- url: /css
+  static_dir: assets/css
+  secure: optional
+  login: optional
+
+- url: /img
+  static_dir: assets/img
+  secure: optional
+  login: optional
+
+- url: /js
+  static_dir: assets/js
+  secure: optional
+  login: optional
+
+# Administrivia
+#---------------
+
+- url: /ds-admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+
+- url: /cron/.*
+  script: cron.app
+  login: admin
+
+# Incoming email
+#----------------
+
+- url: /_ah/mail/.+
+  script: email.app
+  login: admin
+
+# Main app
+#----------
+
+- url: .*
+  script: main.app
+  secure: always
+  login: optional
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
