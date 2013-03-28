@@ -5,20 +5,20 @@ from app.util.request import RequestHandler
 
 
 class Login(RequestHandler):
-	def _get(self):
+	def _get(self, *args, **kwargs):
 		self.redirect(users.create_login_url('/'))
 
 class Logout(RequestHandler):
-	def _get(self):
+	def _get(self, *args, **kwargs):
 		self.redirect(users.create_logout_url('/'))
 
 class NotFound(RequestHandler):
-	def _get(self):
+	def _get(self, *args, **kwargs):
 		self.abort_not_found()
 
 
 class SimplePage(RequestHandler):
-	def _get(self):
+	def _get(self, *args, **kwargs):
 		if hasattr(self, 'TEMPLATE'):
 			self.render_page(self.TEMPLATE)
 		elif '_template' in self.request.route_kwargs:
