@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Ingress Excubitor{% endblock %}</title>
+{% comment %}<link rel="stylesheet" href="/css/core.css">{% endcomment %}
+{% if has_jquery %}
+<script src="/js/jquery-1.9.1.min.js"></script>
+{% endif %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+{% block bodycontent %}{% endblock %}
+{% if CONFIG.ANALYTICS_ID %}
+<script type="text/javascript">
+var _gaq=_gaq||[];_gaq.push(['_setAccount','{{CONFIG.ANALYTICS_ID}}']);_gaq.push(['_trackPageview']);(function(d,s){var ga=d.createElement(s);ga.type='text/java'+s;ga.async=true;ga.src=('https:'==d.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var j=d.getElementsByTagName(s)[0];j.parentNode.insertBefore(ga,j);})(document,'script');
+</script>
+{% endif %}
+</body>
+</html>
